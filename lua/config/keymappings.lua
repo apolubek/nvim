@@ -100,6 +100,15 @@ keymap("n", "K", function()
   local winid = require("ufo").peekFoldedLinesUnderCursor()
   if not winid then
     vim.lsp.buf.hover()
+    vim.defer_fn(function()
+      if pcall(vim.cmd, "wincmd w") then
+        local cfg = vim.api.nvim_win_get_config(0)
+        if cfg.relative == "win" then
+          vim.wo.number = true
+          vim.wo.relativenumber = true
+        end
+      end
+    end, 50)
   end
 end)
 
