@@ -14,11 +14,13 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     config = function()
-      require('telescope').load_extension('fzf')
-      require("telescope").load_extension("git_worktree")
+      local telescope = require("telescope")
+      telescope.load_extension('fzf')
+      telescope.load_extension("git_worktree")
       local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
 
-      require('telescope').setup {
+      telescope.setup {
         defaults = {
           border            = true,
           hl_result_eol     = true,
@@ -72,6 +74,9 @@ return {
           }
         }
       }
+
+      vim.keymap.set("n", "fg", builtin.live_grep, { desc = "Telescope find grep" })
+      vim.keymap.set("n", "ff", builtin.find_files, { desc = "Telescope find files" })
     end,
     dependencies = {
       { "nvim-lua/popup.nvim" },
