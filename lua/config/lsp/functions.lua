@@ -29,12 +29,12 @@ function M.enable_format_on_save()
     callback = M.format,
     group = group,
   })
-  require("notify")("Enabled format on save", "info", { title = "LSP", timeout = 2000 })
+  vim.notify("Enabled format on save", "info", { title = "LSP", timeout = 2000 })
 end
 
 function M.disable_format_on_save()
   vim.api.nvim_del_augroup_by_name("format_on_save")
-  require("notify")("Disabled format on save", "info", { title = "LSP", timeout = 2000 })
+  vim.notify("Disabled format on save", "info", { title = "LSP", timeout = 2000 })
 end
 
 function M.toggle_format_on_save()
