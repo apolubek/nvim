@@ -9,7 +9,10 @@ return {
     config = function()
       require('config.lsp.setup')
       require('config.lsp.config')
-      require('config.lsp.functions')
+      local fns = require('config.lsp.functions')
+
+      -- auto format on
+      fns.enable_format_on_save()
     end
   },
 
