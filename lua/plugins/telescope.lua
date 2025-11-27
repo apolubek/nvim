@@ -18,7 +18,7 @@ return {
       telescope.load_extension('fzf')
       telescope.load_extension("git_worktree")
       local actions = require('telescope.actions')
-local builtin = require('telescope.builtin')
+      local builtin = require('telescope.builtin')
 
       telescope.setup {
         defaults = {
