@@ -7,29 +7,34 @@ return {
 
       conform.setup({
         formatters_by_ft = {
-          css = { { "prettierd", "prettier" } },
-          graphql = { { "prettierd", "prettier" } },
-          html = { { "prettierd", "prettier" } },
-          javascript = { { "prettierd", "prettier" } },
-          javascriptreact = { { "prettierd", "prettier" } },
-          json = { { "prettierd", "prettier" } },
+          css = { "prettierd", "prettier" },
+          graphql = { "prettierd", "prettier" },
+          html = { "prettierd", "prettier" },
+          javascript = { "prettierd", "prettier" },
+          javascriptreact = { "prettierd", "prettier" },
+          json = { "prettierd", "prettier" },
           lua = { "stylua" },
-          markdown = { { "prettierd", "prettier" } },
+          markdown = { "prettierd", "prettier" },
           python = { "isort", "black" },
           sql = { "sql-formatter" },
-          svelte = { { "prettierd", "prettier" } },
-          typescript = { { "prettierd", "prettier", "sql-formatter" } },
-          typescriptreact = { { "prettierd", "prettier" } },
+          svelte = { "prettierd", "prettier" },
+          typescript = { "prettierd", "prettier", "sql-formatter" },
+          typescriptreact = { "prettierd", "prettier" },
           yaml = { "prettier" },
-          xml = { "xmlformatter" }
+          xml = { "xmlformatter" },
         },
+        format_on_save = {
+          timeout_ms = 1000,
+          lsp_format = "fallback",
+        },
+        stop_after_first = true,
       })
 
       vim.keymap.set({ "n" }, "<leader>f", function()
         conform.format({
           lsp_fallback = true,
           async = false,
-          timeout_ms = 500,
+          -- timeout_ms = 500,
         })
       end, { desc = "format file" })
 
@@ -37,7 +42,7 @@ return {
         conform.format({
           lsp_fallback = true,
           async = false,
-          timeout_ms = 500,
+          -- timeout_ms = 500,
         })
       end, { desc = "format selection" })
 
