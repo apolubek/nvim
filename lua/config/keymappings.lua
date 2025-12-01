@@ -115,3 +115,24 @@ end)
 -- Adjust font size
 keymap("n", "<M-=>", function() require('utils').adjust_font_size(1) end, silent)
 keymap("n", "<M-->", function() require('utils').adjust_font_size(-1) end, silent)
+
+
+-- Center view after scrolling
+vim.cmd([[
+  nnoremap <C-d> <C-d>zz
+  nnoremap <C-u> <C-u>zz
+]])
+
+-- Center view after prev/next find
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    vim.keymap.set("n", "n", function()
+      vim.cmd("normal! nzzzv")
+    end, { silent = true, noremap = true })
+
+    vim.keymap.set("n", "N", function()
+      vim.cmd("normal! Nzzzv")
+    end, { silent = true, noremap = true })
+  end
+})
