@@ -11,7 +11,7 @@ local icons = require("utils.icons")
 EcoVim = {
   colorscheme = "tokyonight-night",
   ui = {
-    font = { "FiraCode Nerd Font", ":h14" },
+    font = { "FiraMono Nerd Font", ":h14" },
     float = {
       border = "rounded",
     },
@@ -23,7 +23,7 @@ EcoVim = {
         enabled = true,
       },
       copilot = {
-        enabled = true,
+        enabled = false,
       },
     },
     completion = {
