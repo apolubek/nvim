@@ -22,7 +22,7 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "copilot",
+          adapter = "codex",
           keymaps = {
             completion = {
               modes = {
@@ -100,24 +100,34 @@ return {
           },
         },
         inline = {
-          adapter = "copilot",
+          adapter = "codex",
         },
         agent = {
-          adapter = "copilot",
+          adapter = "codex",
         },
       },
       adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              model = {
-                default = "claude-3.5-sonnet",
+        acp = {
+          codex = function()
+            return require("codecompanion.adapters").extend("codex", {
+              defaults = {
+                auth_method = "chatgpt",
               },
-            },
-          })
-        end,
+            })
+          end,
+        },
+        --   http = {
+        --     copilot = function()
+        --       return require("codecompanion.adapters").extend("copilot", {
+        --         schema = {
+        --           model = {
+        --             default = "claude-3.5-sonnet",
+        --           },
+        --         },
+        --       })
+        --     end,
+        --   }
       },
-
     }
   }
 }
